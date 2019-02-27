@@ -1,0 +1,24 @@
+#include <Zumo32U4.h>
+Zumo32U4ProximitySensors proxSensors;
+Zumo32U4Motors motors;
+
+
+
+void setup() {
+ Serial.begin(115200); // Baud rate 115200(bit transmission rate)
+ proxSensors.initThreeSensors();
+}
+
+
+void loop() {
+  proxSensors.read(); 
+  proxSensors.countsFrontWithRightLeds();
+  proxSensors.countsFrontWithLeftLeds();
+  Serial.println( proxSensors.countsFrontWithLeftLeds() );
+  Serial.println( proxSensors.countsFrontWithRightLeds() );
+  if(proxSensors.countsFrontWithLeftLeds()>5 && proxSensors.countsFrontWithRightLeds()>5){
+    motors.setSpeeds(100, 100);
+  }else{ 
+    motors.setSpeeds(0,0);
+} 
+}
