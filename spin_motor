@@ -1,0 +1,16 @@
+#include <Zumo32U4.h>
+Zumo32U4Motors motors;
+void motor()
+{
+ motors.setSpeeds(10, -10);
+ delay(5000);
+ motors.setSpeeds(0,0);
+
+}
+void setup() {
+  motor();
+}
+
+void loop() {
+
+}
